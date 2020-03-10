@@ -6,4 +6,6 @@ to run:
 
 3. login to your db and run query.sql
 
-4. docker run -d -p 5000:5000 --name <name> --network=<network_name> <image_name>
+4. build docker image from dockerfile
+
+5. docker run -d -p 5000:5000 --name <name> --network=<network_name> <image_name>
