@@ -18,7 +18,7 @@ payload_model = api.model('data', {
 })
 
 
-@api.route('/students')
+@api.route('/')
 class index(Resource):
     def get(self):
         students_schema = StudentsSchema(many=True)
@@ -41,9 +41,9 @@ class index(Resource):
             db.session.commit()
         except (SQLAlchemy.exc.SQLAlchemyError, SQLAlchemy.exc.DBAPIERROR):
             return {"error": "error"}, 500
-        return {"url": f"{url_for('index')}/{_student.id}"}, 201
+        return {"url": f"{url_for('students_index')}/{_student.id}"}, 201
 
-@api.route('/students/<int:id>')
+@api.route('/<int:id>')
 class student_id(Resource):
     @check_if_user_exists
     def get(self, id):
